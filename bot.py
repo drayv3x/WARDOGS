@@ -242,7 +242,7 @@ async def translate_context(interaction: discord.Interaction, message: discord.M
 
     embed = discord.Embed(
         title=f"🌐 Перевод • {author_name}",
-        description=f"{translated_text}\n\n[ Перейти к оригиналу]({message.jump_url})",
+        description=f"{translated_text}\n\n[Перейти к оригиналу]({message.jump_url})",
         color=0x5865F2
     )
     
