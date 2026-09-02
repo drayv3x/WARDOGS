@@ -225,7 +225,7 @@ async def translate_context(interaction: discord.Interaction, message: discord.M
     if not text:
         await interaction.response.send_message(
             "❌ Сообщение не содержит текста для перевода.",
-            ephemeral=True
+            ephemeral=True  # Оставляем скрытым только сообщение об ошибке
         )
         return
 
@@ -242,10 +242,12 @@ async def translate_context(interaction: discord.Interaction, message: discord.M
 
     embed = discord.Embed(
         title=f"🌐 Перевод • {author_name}",
-        description=translated_text,
+        description=f"{translated_text}\n\n[ Перейти к оригиналу]({message.jump_url})",
         color=0x5865F2
     )
-    await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+    # ephemeral НЕ указан (по умолчанию False) — перевод увидят ВСЕ
+    await interaction.response.send_message(embed=embed)
 
 
 @bot.event
